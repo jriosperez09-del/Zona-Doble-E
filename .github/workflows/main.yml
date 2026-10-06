@@ -1,0 +1,61 @@
+name: Generar APK Zona Doble E
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'Zona_Doble_E_v0_1.zip'
+      - '.github/workflows/main.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar proyecto
+        uses: actions/checkout@v6
+
+      - name: Preparar Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Extraer proyecto
+        shell: bash
+        run: |
+          rm -rf app
+          mkdir app
+          unzip -q Zona_Doble_E_v0_1.zip -d app
+
+          if [ -f app/pubspec.yaml ]; then
+            echo "PROJECT_DIR=app" >> "$GITHUB_ENV"
+          elif [ -f app/zona_doble_e_v1/pubspec.yaml ]; then
+            echo "PROJECT_DIR=app/zona_doble_e_v1" >> "$GITHUB_ENV"
+          else
+            echo "No se encontró pubspec.yaml"
+            find app -maxdepth 3 -type f | sort
+            exit 1
+          fi
+
+      - name: Crear archivos Android
+        run: |
+          cd "$PROJECT_DIR"
+          flutter create --platforms=android .
+
+      - name: Instalar dependencias
+        run: |
+          cd "$PROJECT_DIR"
+          flutter pub get
+
+      - name: Generar APK
+        run: |
+          cd "$PROJECT_DIR"
+          flutter build apk --release
+
+      - name: Guardar APK
+        uses: actions/upload-artifact@v7
+        with:
+          name: Zona-Doble-E-APK
+          path: ${{ env.PROJECT_DIR }}/build/app/outputs/flutter-apk/app-release.apk
+          if-no-files-found: error
