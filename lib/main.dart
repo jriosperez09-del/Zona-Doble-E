@@ -35,6 +35,7 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
+     
 class _LoginScreenState extends State<LoginScreen> {
   final code = TextEditingController();
   bool loading = false;
@@ -42,13 +43,17 @@ class _LoginScreenState extends State<LoginScreen> {
   void enter() async {
     setState(() => loading = true);
     await Future.delayed(const Duration(milliseconds: 500));
+
     if (!mounted) return;
+
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (_) => const HomeScreen()),
+      MaterialPageRoute(
+        builder: (_) => const HomeScreen(),
+      ),
     );
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,10 +64,13 @@ class _LoginScreenState extends State<LoginScreen> {
             padding: const EdgeInsets.all(22),
             child: Container(
               width: double.infinity,
-              padding: const EdgeInsets.all(22),
+              padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
                 color: const Color(0xFF101010),
-                border: Border.all(color: kRed, width: 1.5),
+                border: Border.all(
+                  color: kRed,
+                  width: 1.5,
+                ),
                 borderRadius: BorderRadius.circular(24),
                 boxShadow: [
                   BoxShadow(
@@ -76,12 +84,16 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const SizedBox(height: 12),
+
                   Container(
-                    width: 116,
-                    height: 100,
+                    width: 120,
+                    height: 105,
                     decoration: BoxDecoration(
                       color: Colors.black,
-                      border: Border.all(color: kRed, width: 2),
+                      border: Border.all(
+                        color: kRed,
+                        width: 2,
+                      ),
                       borderRadius: BorderRadius.circular(20),
                       boxShadow: [
                         BoxShadow(
@@ -102,7 +114,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 22),
+
+                  const SizedBox(height: 24),
+
                   const Text(
                     'ZONA DOBLE E',
                     textAlign: TextAlign.center,
@@ -113,9 +127,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       letterSpacing: 2,
                     ),
                   ),
-                  const SizedBox(height: 8),
-                  Container(width: 100, height: 3, color: kRed),
-                  const SizedBox(height: 12),
+
+                  const SizedBox(height: 10),
+
+                  Container(
+                    width: 100,
+                    height: 3,
+                    color: kRed,
+                  ),
+
+                  const SizedBox(height: 14),
+
                   const Text(
                     'CONECTADOS EN LA MISMA ZONA',
                     textAlign: TextAlign.center,
@@ -125,15 +147,25 @@ class _LoginScreenState extends State<LoginScreen> {
                       letterSpacing: 1.2,
                     ),
                   ),
+
                   const SizedBox(height: 36),
+
                   TextField(
                     controller: code,
-                    textCapitalization: TextCapitalization.characters,
-                    style: const TextStyle(color: Colors.white),
+                    textCapitalization:
+                        TextCapitalization.characters,
+                    style: const TextStyle(
+                      color: Colors.white,
+                    ),
                     decoration: InputDecoration(
                       labelText: 'Código de acceso',
-                      labelStyle: const TextStyle(color: Colors.white70),
-                      prefixIcon: const Icon(Icons.key_rounded, color: kRed),
+                      labelStyle: const TextStyle(
+                        color: Colors.white70,
+                      ),
+                      prefixIcon: const Icon(
+                        Icons.key_rounded,
+                        color: kRed,
+                      ),
                       filled: true,
                       fillColor: const Color(0xFF1C1C1C),
                       enabledBorder: OutlineInputBorder(
@@ -144,11 +176,16 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
-                        borderSide: const BorderSide(color: kRed, width: 2),
+                        borderSide: const BorderSide(
+                          color: kRed,
+                          width: 2,
+                        ),
                       ),
                     ),
                   ),
-                  const SizedBox(height: 24),
+
+                  const SizedBox(height: 22),
+
                   SizedBox(
                     width: double.infinity,
                     height: 56,
@@ -162,9 +199,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       onPressed: loading ? null : enter,
                       child: loading
-                          ? const CircularProgressIndicator(color: Colors.white)
+                          ? const CircularProgressIndicator(
+                              color: Colors.white,
+                            )
                           : const Text(
-                              'ENTRAR',
+                              'INICIO',
                               style: TextStyle(
                                 fontSize: 17,
                                 fontWeight: FontWeight.w900,
@@ -173,20 +212,30 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                     ),
                   ),
+
                   const SizedBox(height: 22),
+
                   const Text(
                     '¿AÚN NO TIENES UNA CUENTA?',
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white70, fontSize: 11),
+                    style: TextStyle(
+                      color: Colors.white70,
+                      fontSize: 11,
+                    ),
                   ),
-                  const SizedBox(height: 10),
+
+                  const SizedBox(height: 12),
+
                   SizedBox(
                     width: double.infinity,
                     height: 50,
                     child: OutlinedButton(
                       style: OutlinedButton.styleFrom(
                         foregroundColor: Colors.white,
-                        side: const BorderSide(color: kRed, width: 1.5),
+                        side: const BorderSide(
+                          color: kRed,
+                          width: 1.5,
+                        ),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
@@ -209,15 +258,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 28),
-                  const Text(
-                    'PROTOTIPO V0.1',
-                    style: TextStyle(
-                      color: Colors.white38,
-                      fontSize: 10,
-                      letterSpacing: 2,
-                    ),
-                  ),
+
+                  const SizedBox(height: 12),
                 ],
               ),
             ),
@@ -227,8 +269,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
-  
-
+              
 class UserPoint {
   final String name;
   final String phone;
