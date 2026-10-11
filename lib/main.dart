@@ -48,90 +48,187 @@ class _LoginScreenState extends State<LoginScreen> {
       MaterialPageRoute(builder: (_) => const HomeScreen()),
     );
   }
-
+}
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kBlack,
+      backgroundColor: const Color(0xFF050505),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.all(28),
-            child: Column(
-              children: [
-                Container(
-                  width: 112, height: 112,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: kRed,
-                    boxShadow: [
-                      BoxShadow(color: kRed.withOpacity(.45), blurRadius: 30, spreadRadius: 4)
-                    ],
+            padding: const EdgeInsets.all(22),
+            child: Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(22),
+              decoration: BoxDecoration(
+                color: const Color(0xFF101010),
+                border: Border.all(color: kRed, width: 1.5),
+                borderRadius: BorderRadius.circular(24),
+                boxShadow: [
+                  BoxShadow(
+                    color: kRed.withOpacity(0.25),
+                    blurRadius: 25,
+                    spreadRadius: 2,
                   ),
-                  child: const Icon(Icons.location_on_rounded, color: Colors.white, size: 62),
-                ),
-                const SizedBox(height: 22),
-                const Text(
-                  'ZONA DOBLE E',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 30,
-                    fontWeight: FontWeight.w900,
-                    letterSpacing: 2.2,
-                  ),
-                ),
-                const SizedBox(height: 6),
-                const Text(
-                  'Conectados en la misma zona.',
-                  style: TextStyle(color: Colors.white70, fontSize: 15),
-                ),
-                const SizedBox(height: 42),
-                TextField(
-                  controller: code,
-                  textCapitalization: TextCapitalization.characters,
-                  style: const TextStyle(color: Colors.white),
-                  decoration: InputDecoration(
-                    labelText: 'Código de acceso',
-                    labelStyle: const TextStyle(color: Colors.white70),
-                    prefixIcon: const Icon(Icons.key_rounded, color: kRed),
-                    filled: true,
-                    fillColor: Colors.white10,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      borderSide: BorderSide.none,
+                ],
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const SizedBox(height: 12),
+                  Container(
+                    width: 116,
+                    height: 100,
+                    decoration: BoxDecoration(
+                      color: Colors.black,
+                      border: Border.all(color: kRed, width: 2),
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: [
+                        BoxShadow(
+                          color: kRed.withOpacity(0.35),
+                          blurRadius: 20,
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Text(
+                        'ZDE',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 42,
+                          fontWeight: FontWeight.w900,
+                          letterSpacing: 3,
+                        ),
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 18),
-                SizedBox(
-                  width: double.infinity,
-                  height: 54,
-                  child: FilledButton(
-                    style: FilledButton.styleFrom(
-                      backgroundColor: kRed,
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                  const SizedBox(height: 22),
+                  const Text(
+                    'ZONA DOBLE E',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 27,
+                      fontWeight: FontWeight.w900,
+                      letterSpacing: 2,
                     ),
-                    onPressed: loading ? null : enter,
-                    child: loading
-                        ? const CircularProgressIndicator(color: Colors.white)
-                        : const Text('ENTRAR', style: TextStyle(fontWeight: FontWeight.w900)),
                   ),
-                ),
-                const SizedBox(height: 18),
-                const Text(
-                  'Prototipo v0.1 • La validación real de códigos se conectará al servidor.',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.white38, fontSize: 12),
-                ),
-              ],
+                  const SizedBox(height: 8),
+                  Container(width: 100, height: 3, color: kRed),
+                  const SizedBox(height: 12),
+                  const Text(
+                    'CONECTADOS EN LA MISMA ZONA',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white70,
+                      fontSize: 11,
+                      letterSpacing: 1.2,
+                    ),
+                  ),
+                  const SizedBox(height: 36),
+                  TextField(
+                    controller: code,
+                    textCapitalization: TextCapitalization.characters,
+                    style: const TextStyle(color: Colors.white),
+                    decoration: InputDecoration(
+                      labelText: 'Código de acceso',
+                      labelStyle: const TextStyle(color: Colors.white70),
+                      prefixIcon: const Icon(Icons.key_rounded, color: kRed),
+                      filled: true,
+                      fillColor: const Color(0xFF1C1C1C),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide(
+                          color: kRed.withOpacity(0.55),
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: const BorderSide(color: kRed, width: 2),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 56,
+                    child: FilledButton(
+                      style: FilledButton.styleFrom(
+                        backgroundColor: kRed,
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      onPressed: loading ? null : enter,
+                      child: loading
+                          ? const CircularProgressIndicator(color: Colors.white)
+                          : const Text(
+                              'ENTRAR',
+                              style: TextStyle(
+                                fontSize: 17,
+                                fontWeight: FontWeight.w900,
+                                letterSpacing: 2,
+                              ),
+                            ),
+                    ),
+                  ),
+                  const SizedBox(height: 22),
+                  const Text(
+                    '¿AÚN NO TIENES UNA CUENTA?',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white70, fontSize: 11),
+                  ),
+                  const SizedBox(height: 10),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 50,
+                    child: OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        foregroundColor: Colors.white,
+                        side: const BorderSide(color: kRed, width: 1.5),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      onPressed: () {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text(
+                              'El registro estará disponible cuando conectemos el módulo de cuentas.',
+                            ),
+                          ),
+                        );
+                      },
+                      child: const Text(
+                        'REGISTRO',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w900,
+                          letterSpacing: 2,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 28),
+                  const Text(
+                    'PROTOTIPO V0.1',
+                    style: TextStyle(
+                      color: Colors.white38,
+                      fontSize: 10,
+                      letterSpacing: 2,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
       ),
     );
   }
-}
+
+  
 
 class UserPoint {
   final String name;
