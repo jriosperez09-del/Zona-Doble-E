@@ -48,7 +48,6 @@ class _LoginScreenState extends State<LoginScreen> {
       MaterialPageRoute(builder: (_) => const HomeScreen()),
     );
   }
-
   
   @override
   Widget build(BuildContext context) {
@@ -227,7 +226,7 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-
+}
   
 
 class UserPoint {
