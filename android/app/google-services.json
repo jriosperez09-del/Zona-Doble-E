@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "796357012492",
+    "project_id": "zonadoblee-597d2",
+    "storage_bucket": "zonadoblee-597d2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:796357012492:android:f563e2efd7859a76425229",
+        "android_client_info": {
+          "package_name": "com.zonadoble.e.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGrGFH16eu2KBM2kpeiwkK2jxHO3S11L0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
